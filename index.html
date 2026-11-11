@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أدوات الحاج تكنلوجي</title>
+<style>
+:root{--bg:#000;--card:#0a0f0c;--g:#00ff9c;--dim:#1b3a2c;--tx:#cfeee0;--r:#ff3b3b;--y:#ffd000;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Courier New",ui-monospace,Tahoma,monospace;padding:14px;max-width:560px;margin:auto}
+h1{color:var(--g);text-align:center;font-size:22px;text-shadow:0 0 10px var(--g);margin:10px 0 2px;min-height:30px}
+.cur{animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.gl{animation:gl 3.5s infinite}
+@keyframes gl{0%,88%,100%{transform:none;text-shadow:0 0 10px var(--g)}90%{transform:translateX(-3px);text-shadow:3px 0 var(--r),-3px 0 #0ff}92%{transform:translateX(3px);text-shadow:-3px 0 var(--r),3px 0 #0ff}94%{transform:translateX(-1px)}}
+@media (prefers-reduced-motion:reduce){.gl,.cur{animation:none}}
+.sub{text-align:center;color:#5c8a74;font-size:12px;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--dim);border-radius:12px;padding:14px;margin-bottom:14px;box-shadow:0 0 12px #00ff9c14}
+h2{margin:0 0 10px;font-size:16px;color:var(--g)}
+input,textarea{width:100%;background:#000;border:1px solid var(--dim);color:var(--g);padding:10px;border-radius:8px;font:inherit;font-size:15px;outline:none}
+input:focus,textarea:focus{border-color:var(--g)}
+button{background:transparent;color:var(--g);border:1px solid var(--g);padding:9px 14px;border-radius:8px;font:inherit;cursor:pointer;margin-top:8px}
+button:active{background:var(--g);color:#000}
+.out{direction:ltr;text-align:left;word-break:break-all;color:var(--g);background:#000;border:1px dashed var(--dim);border-radius:8px;padding:10px;margin-top:8px;min-height:20px}
+.bar{height:10px;background:#111;border-radius:6px;margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;transition:.3s}
+canvas{display:block;margin:10px auto 0;background:#fff;border-radius:6px;max-width:100%}
+.row{display:flex;gap:8px;align-items:center;justify-content:space-between}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.grid .stat{margin:0}.grid .stat b{font-size:19px}.grid .stat{font-size:12px}
+.lim{margin-top:8px;font-size:12px}.lim .row{margin-bottom:3px}.lim .bar{height:6px;margin:0 0 8px}
+.stat{flex:1;text-align:center;border:1px solid var(--dim);border-radius:8px;padding:8px;margin-top:8px}
+.stat b{display:block;font-size:22px;color:var(--g)}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--g);color:#000;padding:8px 16px;border-radius:20px;opacity:0;transition:.3s;pointer-events:none}
+.toast.on{opacity:1}
+/* modern glass theme */
+:root{--g:#6ee7d8;--dim:rgba(255,255,255,.14);--tx:#eef2f8}
+html{background:#070b18}
+body{background:transparent;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;color:var(--tx)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(520px 420px at 12% 8%,rgba(124,58,237,.55),transparent 65%),radial-gradient(480px 420px at 95% 28%,rgba(14,165,233,.5),transparent 65%),radial-gradient(560px 480px at 25% 100%,rgba(16,185,129,.4),transparent 65%),#070b18}
+h1{color:#fff;font-size:26px;font-weight:700;text-shadow:0 0 24px rgba(110,231,216,.55)}
+.sub{color:rgba(255,255,255,.6)}
+.card{background:rgba(255,255,255,.07);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+h2{color:#fff;font-weight:600;font-size:17px}
+input,textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:12px;font-family:inherit}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.4)}
+input:focus,textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(110,231,216,.15)}
+button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);color:#fff;border-radius:12px;padding:10px 20px;font-family:inherit;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:.2s}
+button:hover{background:rgba(255,255,255,.18)}
+button:active{background:rgba(255,255,255,.3);color:#fff;transform:scale(.97)}
+.out{background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.1);border-radius:12px;font-family:ui-monospace,"Courier New",monospace}
+.stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px}
+.bar{background:rgba(255,255,255,.1)}
+.toast{background:rgba(20,28,40,.9);color:#fff;border:1px solid rgba(255,255,255,.2)}
+canvas{border-radius:12px}
+</style>
+</head>
+<body>
+<h1 id="ttl">الحاج تكنولوجي</h1>
+<div class="sub">كل الأدوات شغالة جوا المتصفح — بدون نت</div>
+
+<div class="card"><h2>🔑 مولد كلمات سر ذكي</h2>
+<input id="pwIn" placeholder="اسمك أو تاريخ أو أي كلمة تريدها قريبة منها (اختياري)">
+<div class="sub" style="text-align:start;margin:6px 0 0">بيخلط كلمتك مع رموز وحروف عشوائية عشان تكون سهلة ليك وقوية. بتقدر تكتب بالعربي برضو.</div>
+<button onclick="genPw()">توليد</button>
+<div id="pwList"></div></div>
+
+<div class="card"><h2>📱 مولد QR</h2>
+<input id="qrIn" dir="ltr" placeholder="https://t.me/your_channel">
+<div class="row"><button onclick="makeQR()">توليد QR</button><button onclick="dlQR()">حفظ صورة</button></div>
+<canvas id="qr" width="0" height="0"></canvas>
+<div id="qrMsg" class="sub"></div></div>
+
+<div class="card"><h2>🔢 عداد الحروف</h2>
+<textarea id="cnt" rows="4" placeholder="اكتب بوستك هنا..."></textarea>
+<div class="grid">
+<div class="stat"><b id="c1">0</b>حرف</div>
+<div class="stat"><b id="c2">0</b>بدون مسافات</div>
+<div class="stat"><b id="c3">0</b>كلمة</div>
+<div class="stat"><b id="c4">0</b>جملة</div>
+<div class="stat"><b id="c5">0</b>سطر</div>
+<div class="stat"><b id="c6">0</b>دقيقة قراءة</div></div>
+<div class="lim" id="lim"></div>
+<button onclick="cnt.value='';cnt.oninput()">مسح</button></div>
+
+<div class="card"><h2>🛡️ فاحص الباسورد</h2>
+<input id="chk" dir="ltr" placeholder="اكتب الباسورد">
+<div class="bar"><i id="bar"></i></div>
+<div id="chkTx" class="sub" style="margin-top:8px"></div></div>
+
+<div class="card"><h2>✨ النص المزخرف</h2>
+<input id="fan" placeholder="اكتب اسمك">
+<div id="fanOut"></div></div>
+
+<div class="card"><h2>🖼️ ضغط الصور</h2>
+<input type="file" id="imgIn" accept="image/*">
+<div class="row" style="margin-top:12px"><span>الجودة <b id="qv">70</b>%</span><input type="range" id="imgQ" min="20" max="95" value="70" style="flex:1;padding:0;border:0;background:none"></div>
+<div class="row" style="margin-top:8px"><span>أقصى عرض</span>
+<select id="imgW" style="background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:8px;font:inherit">
+<option value="0" style="color:#000">الأصلي</option><option value="1920" style="color:#000">1920</option><option value="1280" style="color:#000">1280</option><option value="1080" style="color:#000">1080</option><option value="720" style="color:#000">720</option><option value="480" style="color:#000">480</option></select></div>
+<div id="imgInfo" class="sub" style="margin-top:10px"></div>
+<img id="imgPv" alt="" style="display:none;max-width:100%;border-radius:12px;margin:auto">
+<button onclick="dlImg()">حفظ الصورة</button></div>
+
+<div class="card"><h2>🎲 قرعة المسابقات</h2>
+<textarea id="rfIn" rows="5" placeholder="الصق الأسماء هنا، اسم في كل سطر"></textarea>
+<div class="row" style="margin-top:10px"><span>عدد الفائزين</span><input type="number" id="rfN" min="1" value="1" style="width:80px;text-align:center"></div>
+<div id="rfCnt" class="sub" style="margin-top:8px"></div>
+<div class="out" id="rfRoll" style="display:none;direction:rtl;text-align:center;font-size:20px"></div>
+<button id="rfBtn" onclick="rfGo()">🎲 اختار الفائز</button>
+<div id="rfRes"></div></div>
+
+<div class="toast" id="t">تم النسخ ✔</div>
+
+<script>
+const $=id=>document.getElementById(id);
+function cp(s){if(!s||s==='—')return;const done=()=>{t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1200)};
+try{navigator.clipboard.writeText(s).then(done,fb)}catch(e){fb()}
+function fb(){const a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove();done()}}
+
+/* raffle */
+const rfList=()=>[...new Set(rfIn.value.split('\n').map(s=>s.trim()).filter(Boolean))];
+rfIn.oninput=()=>{const n=rfList().length;rfCnt.textContent=n?n+' مشارك (المكرر بيتحسب مرة واحدة)':''};
+function rfGo(){const L=rfList();rfRes.innerHTML='';
+if(!L.length){rfCnt.textContent='الصق الأسماء الأول';return}
+const k=Math.max(1,Math.min(Math.floor(+rfN.value)||1,L.length)),a=[...L];
+for(let i=a.length-1;i>0;i--){const j=ri(i+1);[a[i],a[j]]=[a[j],a[i]]}
+const W=a.slice(0,k);
+const show=()=>{rfRoll.style.display='none';rfBtn.disabled=false;rfBtn.style.opacity=1;
+W.forEach((w,i)=>{const o=document.createElement('div');o.className='out';o.style.cssText='direction:rtl;text-align:center;font-size:18px';o.textContent='🏆 '+(k>1?(i+1)+'. ':'')+w;rfRes.append(o)});
+const b=document.createElement('button');b.textContent='نسخ الفائزين';b.onclick=()=>cp(W.join('\n'));rfRes.append(b)};
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){show();return}
+rfBtn.disabled=true;rfBtn.style.opacity=.5;rfRoll.style.display='block';let c=0;
+const iv=setInterval(()=>{rfRoll.textContent=L[ri(L.length)];if(++c>=25){clearInterval(iv);show()}},80)}
+
+/* image compressor */
+let imgFile=null,imgBlob=null;
+const kb=n=>n>1048576?(n/1048576).toFixed(2)+' MB':Math.round(n/1024)+' KB';
+imgIn.onchange=()=>{imgFile=imgIn.files[0];imgRun()};
+imgQ.oninput=()=>{qv.textContent=imgQ.value;imgRun()};imgW.onchange=imgRun;
+function imgRun(){if(!imgFile)return;const u=URL.createObjectURL(imgFile),im=new Image();
+im.onload=()=>{let w=im.naturalWidth,h=im.naturalHeight;const mx=+imgW.value;if(mx&&w>mx){h=Math.round(h*mx/w);w=mx}
+const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,w,h);x.drawImage(im,0,0,w,h);URL.revokeObjectURL(u);
+c.toBlob(b=>{imgBlob=b;imgPv.src=URL.createObjectURL(b);imgPv.style.display='block';
+const p=Math.round((1-b.size/imgFile.size)*100);
+imgInfo.textContent='الأصلي: '+kb(imgFile.size)+' ← بعد الضغط: '+kb(b.size)+' ('+(p>0?'وفّرت '+p+'%':'أكبر من الأصلي، قلل الجودة أو العرض')+') — '+w+'×'+h},'image/jpeg',imgQ.value/100)};
+im.onerror=()=>{imgInfo.textContent='الملف دا ما صورة صالحة'};im.src=u}
+function dlImg(){if(imgBlob)saveF('compressed.jpg',imgBlob)}
+
+/* animated title */
+(()=>{const T='الحاج تكنولوجي',cur='<span class="cur">_</span>';let i=0;
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){ttl.innerHTML=T+cur;return}
+const iv=setInterval(()=>{ttl.innerHTML=T.slice(0,++i)+cur;if(i>=T.length){clearInterval(iv);ttl.classList.add('gl')}},130)})();
+
+/* 1. password */
+const AR={'ا':'a','أ':'a','إ':'e','آ':'a','ب':'b','ت':'t','ث':'th','ج':'j','ح':'h','خ':'kh','د':'d','ذ':'z','ر':'r','ز':'z','س':'s','ش':'sh','ص':'s','ض':'d','ط':'t','ظ':'z','ع':'a','غ':'gh','ف':'f','ق':'q','ك':'k','ل':'l','م':'m','ن':'n','ه':'h','ة':'a','و':'w','ي':'y','ى':'a','ؤ':'o','ئ':'e','ء':''};
+const CS="abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!@#$%&*?",SY="!@#$%&*?-_.",LE={a:'@',e:'3',i:'!',o:'0',s:'$',t:'7'};
+const ri=n=>{const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]%n},rc=s=>s[ri(s.length)];
+function mkPw(base,len){
+let t=[...base].map(c=>c in AR?AR[c]:c).join('').split(/[^A-Za-z0-9]+/).filter(Boolean).slice(0,3).map(x=>x.slice(0,7));
+if(!t.length)t=[Array.from({length:len},()=>rc(CS)).join('')];
+t=t.map(x=>/^\d+$/.test(x)?x:[...x.toLowerCase()].map((c,i)=>i==0?c.toUpperCase():ri(4)==0?c.toUpperCase():(LE[c]&&ri(2)?LE[c]:c)).join(''));
+let p=rc(SY)+rc(CS)+t.join(rc(SY))+rc(SY)+rc(CS)+rc(CS);
+while(p.length<len)p+=rc(CS);
+return /[A-Z]/.test(p)&&/[a-z]/.test(p)&&/\d/.test(p)&&/[^A-Za-z0-9]/.test(p)?p:mkPw(base,len)}
+function genPw(){pwList.innerHTML='';for(let i=0;i<4;i++){const p=mkPw(pwIn.value,14),d=document.createElement('div');d.className='row';
+const o=document.createElement('div');o.className='out';o.style.flex='1';o.textContent=p;
+const b=document.createElement('button');b.textContent='نسخ';b.onclick=()=>cp(p);d.append(o,b);pwList.append(d)}}
+pwIn.onkeydown=e=>{if(e.key=='Enter')genPw()};
+genPw();
+
+/* 3. counter */
+const LIM=[['X / تويتر',280],['عنوان يوتيوب',100],['إنستغرام (كابشن)',2200],['تليجرام (رسالة)',4096],['فيسبوك (بوست)',63206]];
+cnt.oninput=()=>{const v=cnt.value,n=[...v].length,w=(v.trim().match(/\S+/g)||[]).length;
+c1.textContent=n;c2.textContent=[...v.replace(/\s/g,'')].length;c3.textContent=w;
+c4.textContent=(v.match(/[^.!?؟…\n]+[.!?؟…]*/g)||[]).filter(s=>s.trim()).length;
+c5.textContent=v.split('\n').filter(s=>s.trim()).length;c6.textContent=w?Math.max(1,Math.round(w/200)):0;
+lim.innerHTML=LIM.map(([nm,mx])=>{const p=Math.min(100,n/mx*100),over=n>mx;
+return `<div class="row"><span>${nm}</span><span style="color:${over?'var(--r)':'var(--g)'}">${n} / ${mx}${over?' ⚠️ زايد '+(n-mx):''}</span></div><div class="bar"><i style="width:${p}%;background:${over?'var(--r)':p>85?'var(--y)':'var(--g)'}"></i></div>`}).join('')};
+cnt.oninput();
+
+/* 4. checker */
+chk.oninput=()=>{const v=chk.value;let s=0;
+if(v.length>=8)s++;if(v.length>=12)s++;if(/[a-z]/.test(v)&&/[A-Z]/.test(v))s++;if(/\d/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;
+if(/^(.)\1+$/.test(v)||/123456|password|qwerty/i.test(v))s=Math.min(s,1);
+const L=!v?[0,'','']:s<=2?[33,'var(--r)','ضعيف 🔴 — زيد الطول وخلّط حروف وأرقام ورموز']:s<=3?[66,'var(--y)','متوسط 🟡 — قريب، زيد رموز وطول']:[100,'var(--g)','قوي 🟢 — ماشي كويس!'];
+bar.style.width=L[0]+'%';bar.style.background=L[1];chkTx.textContent=L[2];chkTx.style.color=L[1]};
+
+/* 5. fancy */
+const R=(c,a,b,o)=>c>=a&&c<=b?String.fromCodePoint(o+c-a):null;
+const mk=(u,l)=>s=>[...s].map(ch=>{const c=ch.codePointAt(0);return R(c,65,90,u)||R(c,97,122,l)||ch}).join('');
+const sty=[mk(0x1D4D0,0x1D4EA),mk(0x1D56C,0x1D586),mk(0x24B6,0x24D0),mk(0x1D670,0x1D68A),
+s=>'༺ '+[...s].map(c=>/[\u0621-\u064A]/.test(c)&&!/[اأإآدذرزوؤة]/.test(c)?c+'ـ':c).join('')+' ༻'];
+fan.oninput=()=>{const v=fan.value.trim();fanOut.innerHTML='';if(!v)return;
+sty.forEach(f=>{const r=f(v),d=document.createElement('div');d.className='row';
+const o=document.createElement('div');o.className='out';o.style.flex='1';o.textContent=r;
+const b=document.createElement('button');b.textContent='نسخ';b.onclick=()=>cp(r);d.append(o,b);fanOut.append(d)})};
+
+/* 2. QR (v1-6, ECC L, byte mode, mask 0) */
+const EXP=new Array(512),LOG=new Array(256);
+(()=>{let x=1;for(let i=0;i<255;i++){EXP[i]=x;LOG[x]=i;x<<=1;if(x&256)x^=0x11d}for(let i=255;i<512;i++)EXP[i]=EXP[i-255]})();
+const mul=(a,b)=>a&&b?EXP[LOG[a]+LOG[b]]:0;
+function rs(d,n){let g=[1];for(let i=0;i<n;i++){const h=new Array(g.length+1).fill(0);g.forEach((c,j)=>{h[j]^=c;h[j+1]^=mul(c,EXP[i])});g=h}
+const r=new Array(n).fill(0);for(const b of d){const f=b^r.shift();r.push(0);for(let i=0;i<n;i++)r[i]^=mul(g[i+1],f)}return r}
+const VT=[[19,7,1],[34,10,1],[55,15,1],[80,20,1],[108,26,1],[136,18,2]];
+function qrMatrix(text){
+const bytes=[...new TextEncoder().encode(text)];
+let v=VT.findIndex(t=>bytes.length<=t[0]-2);if(v<0)return null;
+const [dc,ec,nb]=VT[v];v++;
+let bits=[];const push=(x,n)=>{for(let i=n-1;i>=0;i--)bits.push((x>>i)&1)};
+push(4,4);push(bytes.length,8);bytes.forEach(b=>push(b,8));
+push(0,Math.min(4,dc*8-bits.length));while(bits.length%8)bits.push(0);
+const db=[];for(let i=0;i<bits.length;i+=8)db.push(parseInt(bits.slice(i,i+8).join(''),2));
+for(let p=0xEC;db.length<dc;p^=0xEC^0x11)db.push(p);
+const per=dc/nb,blk=[],ecs=[];
+for(let i=0;i<nb;i++){const b=db.slice(i*per,(i+1)*per);blk.push(b);ecs.push(rs(b,ec))}
+const all=[];for(let i=0;i<per;i++)blk.forEach(b=>all.push(b[i]));for(let i=0;i<ec;i++)ecs.forEach(e=>all.push(e[i]));
+const fb=[];all.forEach(b=>{for(let i=7;i>=0;i--)fb.push((b>>i)&1)});
+const N=17+4*v,m=[],f=[];for(let i=0;i<N;i++){m.push(new Array(N).fill(0));f.push(new Array(N).fill(0))}
+const S=(x,y,d)=>{if(x>=0&&y>=0&&x<N&&y<N){m[y][x]=d?1:0;f[y][x]=1}};
+[[3,3],[N-4,3],[3,N-4]].forEach(([cx,cy])=>{for(let dy=-4;dy<=4;dy++)for(let dx=-4;dx<=4;dx++){const d=Math.max(Math.abs(dx),Math.abs(dy));S(cx+dx,cy+dy,d!=2&&d!=4)}});
+for(let i=0;i<N;i++){S(6,i,i%2==0);S(i,6,i%2==0)}
+if(v>1){const p=[6,4*v+10];p.forEach(cx=>p.forEach(cy=>{if((cx==6&&cy==6)||(cx==6&&cy==p[1])||(cx==p[1]&&cy==6))return;
+for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++)S(cx+dx,cy+dy,Math.max(Math.abs(dx),Math.abs(dy))!=1)}))}
+let d=8,r=d<<10;for(let i=14;i>=10;i--)if((r>>i)&1)r^=0x537<<(i-10);
+const F=((d<<10)|r)^0x5412,B=i=>(F>>i)&1;
+for(let i=0;i<6;i++)S(8,i,B(i));S(8,7,B(6));S(8,8,B(7));S(7,8,B(8));for(let i=9;i<15;i++)S(14-i,8,B(i));
+for(let i=0;i<8;i++)S(N-1-i,8,B(i));for(let i=8;i<15;i++)S(8,N-15+i,B(i));S(8,N-8,1);
+let k=0;for(let rt=N-1;rt>=1;rt-=2){if(rt==6)rt=5;for(let vt=0;vt<N;vt++)for(let j=0;j<2;j++){
+const x=rt-j,y=((rt+1)&2)==0?N-1-vt:vt;if(!f[y][x]){m[y][x]=(k<fb.length?fb[k++]:0)^((x+y)%2==0?1:0)}}}
+return m}
+function makeQR(){const v=qrIn.value.trim(),c=qr;qrMsg.textContent='';
+if(!v){qrMsg.textContent='اكتب رابط الأول';return}
+const m=qrMatrix(v);if(!m){qrMsg.textContent='الرابط طويل شديد (الحد حوالي 130 حرف)';return}
+const sc=Math.max(4,Math.floor(300/(m.length+8))),n=(m.length+8)*sc;c.width=c.height=n;
+const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,n,n);x.fillStyle='#000';
+m.forEach((row,y)=>row.forEach((b,i)=>{if(b)x.fillRect((i+4)*sc,(y+4)*sc,sc,sc)}))}
+async function saveF(name,blob){let d=null;try{d=await claude.use('downloads')}catch(e){}
+if(d){try{await d.save({filename:name,data:blob})}catch(e){}return}
+const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click()}
+function dlQR(){if(qr.width)qr.toBlob(b=>saveF('qr.png',b))}
+</script>
+</body>
+</html>
